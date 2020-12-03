@@ -26,9 +26,9 @@ namespace Day03
                     countDown++;
                 }
                 countDown = 1;
-                if (line[(poz + right) % 31].Equals('#'))
+                if (line[(poz + right) % line.Length].Equals('#'))
                     countTrees++;
-                poz = (poz + right) % 31;
+                poz = (poz + right) % line.Length;
             }
             sr.Close();
             return countTrees;
