@@ -7,24 +7,19 @@ namespace Day02
     {
         static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader(@"..\..\..\in.txt");
-            string[] list = new string[1024];
-            int k = 0;
-            string line;
-            while ((line = sr.ReadLine()) != null)
-                list[k++] = line;
-
-            Console.WriteLine(ex1(list, k));
-            Console.WriteLine(ex2(list, k));
+            Console.WriteLine(ex1());
+            Console.WriteLine(ex2());
         }
 
-        public static int ex1(string[] list, int k)
+        public static int ex1()
         {
+            StreamReader sr = new StreamReader(@"..\..\..\in.txt");
             char[] delimitChars = new char[] { ' ', '-', ':' };
             int totalCounter = 0;
-            for (int i = 0; i < k; i++)
+            string line;
+            while ((line = sr.ReadLine()) != null)
             {
-                string[] listPass = list[i].Split(delimitChars);
+                string[] listPass = line.Split(delimitChars);
                 bool ok = true;
                 int min = int.Parse(listPass[0]);
                 int max = int.Parse(listPass[1]);
@@ -41,13 +36,16 @@ namespace Day02
             }
             return totalCounter;
         }
-        public static int ex2(string[] list, int k)
+
+        public static int ex2()
         {
+            StreamReader sr = new StreamReader(@"..\..\..\in.txt");
             char[] delimitChars = new char[] { ' ', '-', ':' };
             int totalCounter = 0;
-            for (int i = 0; i < k; i++)
+            string line;
+            while ((line = sr.ReadLine()) != null)
             {
-                string[] listPass = list[i].Split(delimitChars);
+                string[] listPass = line.Split(delimitChars);
                 int p1 = int.Parse(listPass[0]);
                 int p2 = int.Parse(listPass[1]);
                 char condition = char.Parse(listPass[2]);
