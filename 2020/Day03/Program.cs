@@ -7,37 +7,39 @@ namespace Day03
     {
         static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader(@"..\..\..\in.txt");
-            string[] list = new string[512];
-            int k = 0;
-            string line;
-            while ((line = sr.ReadLine()) != null)
-                list[k++] = line;
-
-            Console.WriteLine(ex1(list, k, 3, 1));
-            Console.WriteLine(ex2(list, k));
+            Console.WriteLine(ex1(3, 1));
+            Console.WriteLine(ex2());
         }
 
-        public static int ex1(string[] list, int k, int right, int down)
+        public static int ex1(int right, int down)
         {
+            StreamReader sr = new StreamReader(@"..\..\..\in.txt");
             int poz = 0;
             int countTrees = 0;
-            for (int i = 0 + down; i < k; i += down)
+            string line = sr.ReadLine();
+            int countDown = 1;
+            while ((line = sr.ReadLine()) != null)
             {
-                if (list[i][(poz + right) % 31].Equals('#'))
+                while (countDown < down)
+                {
+                    line = sr.ReadLine();
+                    countDown++;
+                }
+                countDown = 1;
+                if (line[(poz + right) % 31].Equals('#'))
                     countTrees++;
                 poz = (poz + right) % 31;
             }
-
+            sr.Close();
             return countTrees;
         }
 
-        public static Int64 ex2(string[] list, int k)
+        public static Int64 ex2()
         {
             Int64 prod = 1;
             for (int right = 1; right <= 7; right += 2)
-                prod *= ex1(list, k, right, 1);
-            prod *= ex1(list, k, 1, 2);
+                prod *= ex1(right, 1);
+            prod *= ex1(1, 2);
 
             return prod;
         }
