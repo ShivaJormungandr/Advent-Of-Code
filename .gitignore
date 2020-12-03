@@ -351,5 +351,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+#Added after
 *.csproj
-2020/Day01/Day01.sln
+*.sln
