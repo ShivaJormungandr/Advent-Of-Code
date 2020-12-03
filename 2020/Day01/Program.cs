@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Advent_of_code_1
+namespace Day01
 {
     class Program
     {
