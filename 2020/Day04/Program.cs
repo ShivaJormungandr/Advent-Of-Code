@@ -266,7 +266,6 @@ namespace Day04
         }
         private static bool IsValidHairColor(string color)
         {
-            int ok = 0;
             if (color.Substring(0, 1).Equals("#"))
             {
                 string colorM = color.Substring(1, color.Length - 1);
@@ -274,15 +273,12 @@ namespace Day04
                 {
                     foreach (char c in colorM)
                     {
-                        if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f'))
+                        if (!((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f')))
                         {
-                            ok++;
+                            return false;
                         }
                     }
-                    if (ok == colorM.Length)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             return false;
@@ -296,18 +292,14 @@ namespace Day04
         {
             if (pid.Length == 9)
             {
-                int ok = 0;
                 foreach (char c in pid)
                 {
-                    if (c >= '0' && c <= '9')
+                    if (!(c >= '0' && c <= '9'))
                     {
-                        ok++;
+                        return false;
                     }
                 }
-                if (ok == pid.Length)
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }
