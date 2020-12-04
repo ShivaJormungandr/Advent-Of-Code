@@ -49,8 +49,7 @@ namespace Day02
                 int p1 = int.Parse(listPass[0]);
                 int p2 = int.Parse(listPass[1]);
                 char condition = char.Parse(listPass[2]);
-                if ((listPass[4][p1 - 1].Equals(condition) || listPass[4][p2 - 1].Equals(condition))
-                    && !(listPass[4][p1 - 1].Equals(condition) && listPass[4][p2 - 1].Equals(condition)))
+                if ((listPass[4][p1 - 1].Equals(condition) ^ listPass[4][p2 - 1].Equals(condition)))
                     totalCounter++;
             }
             return totalCounter;
